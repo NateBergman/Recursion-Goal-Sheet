@@ -2,7 +2,7 @@
 // followed by a sequence of ascending integers that begins with 1. When n is odd, the sequence has a single 1 in the middle, but when n is even, it has two 1s in the middle.
 // Throw an IllegalArgumentException if it is passed a value less than 1. (BJP Ch 12 Ex 3)
 public class WriteSequence {
-    public static void main (String[] args) {
+    public static void main (String[] args) { //
         writeSequence(1);
         System.out.println();
         writeSequence(2);
