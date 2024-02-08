@@ -29,7 +29,7 @@ public class GoalSheet08 {
         sortAndRemoveDuplicates(l);
         System.out.println(l);*/
 
-        Set<String> set = new HashSet<String>();
+        /*Set<String> set = new HashSet<String>();
         set.add("1");
         set.add("1234");
         set.add("12");
@@ -38,7 +38,19 @@ public class GoalSheet08 {
         set.add("123");
         System.out.println(set);
         removeEvenLength(set);
-        System.out.println(set);
+        System.out.println(set);*/
+        Map map = new HashMap<String,String>();
+        map.put("1","A");
+        map.put("2","B");
+        map.put("3","C");
+        map.put("4","D");
+        System.out.println(isUnique(map));
+        map.put("4","C");
+        System.out.print(isUnique(map));
+    }
+    public static boolean isUnique(Map map) {
+        Set set = new HashSet(map.values());
+        return set.size() == map.size();
     }
     public static void removeEvenLength(Set<String> set) {
         Iterator<String> itr = set.iterator();
