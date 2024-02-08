@@ -13,12 +13,26 @@ public class GoalSheet09 {
     public static void main (String[] args) {
         LinkedList<Integer> list1 = new LinkedList<Integer>(Arrays.asList(1,6,5,3,8,5,3,7,3,8));
         ArrayList<Integer> list2 = new ArrayList<Integer>(Arrays.asList(1,6,5,3,8,5,3,7,3,8));
-        partition(list1, 5);
+        //partition(list1, 5);
         partition(list2, 5);
         System.out.println(list1);
         System.out.println(list2);
         System.out.println(countUnique(list1));
         System.out.println(countUnique(list2));
+
+        Set<String> set1 = new HashSet<String>(Arrays.asList("123","1","12345","12"));
+        System.out.println(maxLengh(set1));
+    }
+    public static int maxLengh (Set<String> set) {
+        int max = 0;
+        Iterator<String> itr = set.iterator();
+        while (itr.hasNext()) {
+            int i = itr.next().length();
+            if (i > max) {
+                max = i;
+            }
+        }
+        return max;
     }
     public static int countUnique(List<Integer> list) {
         Set<Integer> set = new HashSet<Integer>(list);
