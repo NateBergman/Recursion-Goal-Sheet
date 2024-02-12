@@ -9,14 +9,20 @@ import java.util.Arrays;
 //Write a program that reads a series of input lines and sorts them into alphabetical order, ignoring the case of words. The program should use the merge sort algorithm so that it efficiently sorts even a large file.
 public class GoalSheet10 {
     public static void main (String[] args) {
-       /* for (int i = 1; i < 9; i++) {
+        for (int i = 1; i < 9; i++) {
             writeSquares(i);
             System.out.println();
-        }*/
+        }
+        for (int i = 1; i < 9; i++) {
+            writeSquaresSameOrder(i,true);
+            System.out.println();
+        }
+        /*
         int[] array1 = new int[] {1,8,7,5,3,8,-5,32,39,-2};
         System.out.println(Arrays.toString(array1));
         selectionSort(array1);
         System.out.println(Arrays.toString(array1));
+        */
     }
     public static void selectionSort(int[] array) { //selection sort with n squared efficiency
         for (int i = array.length - 1; i >= 0; i--) {
@@ -31,6 +37,16 @@ public class GoalSheet10 {
             array[maxIndex] = array[i];
             array[i] = maxValue;
         }
+    }
+    public static void writeSquaresSameOrder(int n) {
+        if (n > 0) {
+            System.out.print(n*n + " ");
+            writeSquaresSameOrder(n-2);
+        }
+    }
+    public static void writeSquaresSameOrder(int n, boolean first) {
+        writeSquaresSameOrder((n / 2 + n % 2) * 2 - 1);
+        writeSquaresSameOrder(n / 2 * 2);
     }
     public static void writeSquares(int n) {
         if (n > 0) {
