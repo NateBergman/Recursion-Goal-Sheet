@@ -4,6 +4,8 @@
 //Write a modified version of the selection sort algorithm that selects the largest element each time and moves it to the end of the array, rather than selecting the smallest element and moving it to
 // the beginning. Will this algorithm be faster than the standard selection sort? What will its complexity class (big-O) be?
 
+import jdk.dynalink.linker.ConversionComparator;
+
 import java.util.Arrays;
 
 //Write a program that reads a series of input lines and sorts them into alphabetical order, ignoring the case of words. The program should use the merge sort algorithm so that it efficiently sorts even a large file.
@@ -23,6 +25,31 @@ public class GoalSheet10 {
         selectionSort(array1);
         System.out.println(Arrays.toString(array1));
         */
+        String[] array2 = new String[] {"hello","hi","xylophone","CHARLIE","apple","Bat","bATs","end"};
+        mergeSort(array2);
+        System.out.println(Arrays.toString(array2));
+    }
+    public static void mergeSort(String[] array) {
+        if (array.length > 1) {
+            String[] array1 = Arrays.copyOfRange(array, 0, array.length / 2);
+            String[] array2 = Arrays.copyOfRange(array, array.length / 2, array.length);
+
+            mergeSort(array1);
+            mergeSort(array2);
+
+            int i1 = 0;
+            int i2 = 0;
+            while (i1 + i2 < array1.length + array2.length) {
+                if (i2 >= array2.length || (i1 < array1.length && String.CASE_INSENSITIVE_ORDER.compare(array1[i1],array2[i2]) < 0)) {
+                    array[i1 + i2] = array1[i1];
+                    i1++;
+                } else {
+                    array[i1 + i2] = array2[i2];
+                    i2++;
+                }
+            }
+        }
+
     }
     public static void selectionSort(int[] array) { //selection sort with n squared efficiency
         for (int i = array.length - 1; i >= 0; i--) {
