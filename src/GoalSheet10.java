@@ -11,14 +11,14 @@ import java.util.Arrays;
 //Write a program that reads a series of input lines and sorts them into alphabetical order, ignoring the case of words. The program should use the merge sort algorithm so that it efficiently sorts even a large file.
 public class GoalSheet10 {
     public static void main (String[] args) {
-        for (int i = 1; i < 9; i++) {
+        /*for (int i = 1; i < 9; i++) {
             writeSquares(i);
             System.out.println();
         }
         for (int i = 1; i < 9; i++) {
             writeSquaresSameOrder(i,true);
             System.out.println();
-        }
+        }*/
         /*
         int[] array1 = new int[] {1,8,7,5,3,8,-5,32,39,-2};
         System.out.println(Arrays.toString(array1));
@@ -28,6 +28,10 @@ public class GoalSheet10 {
         String[] array2 = new String[] {"hello","hi","xylophone","CHARLIE","apple","Bat","bATs","end"};
         mergeSort(array2);
         System.out.println(Arrays.toString(array2));
+
+        /*int[] array = new int[] {1,8,7,5,3,8,-5,32,39,-2};
+        sort(array);
+        System.out.println(Arrays.toString(array));*/
     }
     public static void mergeSort(String[] array) {
         if (array.length > 1) {
@@ -50,6 +54,27 @@ public class GoalSheet10 {
             }
         }
 
+    }
+    public static void sort(int[] array) {
+        if (array.length > 1) {
+            int[] array1 = Arrays.copyOfRange(array,0,array.length / 2);
+            int[] array2 = Arrays.copyOfRange(array,array.length / 2, array.length);
+
+            sort(array1);
+            sort(array2);
+
+            int i1 = 0;
+            int i2 = 0;
+            while (i1 + i2 < array1.length + array2.length) {
+                if (i2 >= array2.length || (i1 < array1.length && array1[i1] < array2[i2])) {
+                    array[i1 + i2] = array1[i1];
+                    i1++;
+                } else {
+                    array[i1 + i2] = array2[i2];
+                    i2++;
+                }
+            }
+        }
     }
     public static void selectionSort(int[] array) { //selection sort with n squared efficiency
         for (int i = array.length - 1; i >= 0; i--) {

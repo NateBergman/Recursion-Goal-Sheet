@@ -31,10 +31,23 @@ public class GoalSheet12 {
         System.out.println(p.compare(p2,p3));
         System.out.println(p.compare(p3,p1));*/
 
-        int[] array1 = new int[] {1,8,7,5,3,8,-5,32,39,-2};
+        /*int[] array1 = new int[] {1,8,7,5,3,8,-5,32,39,-2};
         System.out.println(Arrays.toString(array1));
         dualSelectionSort(array1);
-        System.out.println(Arrays.toString(array1));
+        System.out.println(Arrays.toString(array1));*/
+
+        Scanner input = new Scanner(new File("src/StudentData"));
+        ArrayList<Student> students = new ArrayList<Student>();
+        while(input.hasNextLine()) {
+            students.add(new Student(input.nextLine()));
+        }
+        for (StudentComparator.CompareMode mode : StudentComparator.CompareMode.values()) {
+            Collections.sort(students, new StudentComparator(mode));
+            for (Student s : students) {
+                System.out.println(s);
+            }
+            System.out.println();
+        }
     }
     public static void dualSelectionSort (int[] array) { //still order n squared, but makes half as many quick passes in exchange for more if tests. I would guess just a little faster
         int j = array.length - 1; //i is bottom bound, j is top bound, k is current index, v is current value

@@ -7,10 +7,10 @@ public class Student {
 
     public Student (String info) {
         Scanner s = new Scanner(info);
-        firstName = s.next();
         lastName = s.next();
+        firstName = s.next();
         id = s.nextInt();
-        //grade = (int)((double)(s.next()) * 100);
+        grade = (int)(s.nextDouble() * 100);
     }
     private char getLetterGrade() {
         if (grade < 6000) {
@@ -20,6 +20,15 @@ public class Student {
         }
     }
     public String toString() {
-        return firstName + " " + lastName + " " + id + " " + grade + " " + getLetterGrade();
+        return lastName + " " + firstName + " " + id + " " + (grade/100) + "." + (grade%100) + " " + getLetterGrade();
+    }
+    public int getGrade() {
+        return grade;
+    }
+    public int getID() {
+        return id;
+    }
+    public String getName() {
+        return lastName;
     }
 }
